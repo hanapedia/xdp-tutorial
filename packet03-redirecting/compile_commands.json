@@ -1,0 +1,54 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-O2",
+      "-g",
+      "-DHAVE_ELF",
+      "-DHAVE_ZLIB",
+      "-DBPF_DIR_MNT=\"/sys/fs/bpf\"",
+      "-DBPF_OBJECT_PATH=\"/usr/local/lib/bpf\"",
+      "-DDEBUG",
+      "-I../lib/install/include",
+      "../common/common_params.o",
+      "-o",
+      "xdp_prog_user",
+      "xdp_prog_user.c"
+    ],
+    "directory": "/home/hanapedia/code/src/ebpf/xdp-tutorial/packet03-redirecting",
+    "file": "/home/hanapedia/code/src/ebpf/xdp-tutorial/packet03-redirecting/xdp_prog_user.c",
+    "output": "/home/hanapedia/code/src/ebpf/xdp-tutorial/packet03-redirecting/xdp_prog_user"
+  },
+  {
+    "arguments": [
+      "/usr/bin/clang",
+      "-S",
+      "-target",
+      "bpf",
+      "-D",
+      "__BPF_TRACING__",
+      "-Wno-visibility",
+      "-DBPF_DIR_MNT=\"/sys/fs/bpf\"",
+      "-DBPF_OBJECT_PATH=\"/usr/local/lib/bpf\"",
+      "-DDEBUG",
+      "-I../lib/install/include",
+      "-Wall",
+      "-Wno-unused-value",
+      "-Wno-pointer-sign",
+      "-Wno-compare-distinct-pointer-types",
+      "-Werror",
+      "-O2",
+      "-emit-llvm",
+      "-c",
+      "-g",
+      "-o",
+      "xdp_prog_kern.ll",
+      "xdp_prog_kern.c"
+    ],
+    "directory": "/home/hanapedia/code/src/ebpf/xdp-tutorial/packet03-redirecting",
+    "file": "/home/hanapedia/code/src/ebpf/xdp-tutorial/packet03-redirecting/xdp_prog_kern.c",
+    "output": "/home/hanapedia/code/src/ebpf/xdp-tutorial/packet03-redirecting/xdp_prog_kern.ll"
+  }
+]
